@@ -18,9 +18,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv, message;
+    TextView tv, message, counter;
     EditText input;
     Button b1;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         b1 = findViewById(R.id.rollbutton);
         input = findViewById(R.id.userinput);
         message = findViewById(R.id.Message);
+        counter = findViewById(R.id.points);
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(Integer.toString(number));
 
         if(input.getText().toString().equals(tv.getText().toString())){
-            message.setText("COngratulations");
+            message.setText("Congratulations");
+            count++;
+            counter.setText(Integer.toString(count));
         }
         else {
             message.setText("Wrong");
