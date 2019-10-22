@@ -19,7 +19,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.051"
+
+        android:inputType="number"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -30,6 +32,22 @@
         android:onClick="on_button_click"
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="242dp" />
+
+    <EditText
+        android:id="@+id/userinput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter number"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/Message"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,17 +5,21 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.os.Message;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
+    TextView tv, message;
+    EditText input;
     Button b1;
 
     @Override
@@ -24,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        tv = (TextView) this.findViewById(R.id.number);
+        tv = findViewById(R.id.number);
         b1 = findViewById(R.id.rollbutton);
+        input = findViewById(R.id.userinput);
+        message = findViewById(R.id.Message);
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
         Random r = new Random();
         int number = r.nextInt(7-1)+1;
         tv.setText(Integer.toString(number));
+
+        if(input.getText().toString().equals(tv.getText().toString())){
+            message.setText("COngratulations");
+        }
+        else {
+            message.setText("Wrong");
+        }
 
 
     }
