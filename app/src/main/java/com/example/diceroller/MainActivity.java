@@ -21,21 +21,20 @@ import java.util.Random;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
-//Created variables here instead of in the method so that it wouldnt mess with the rest of the program
+    public static String EXTRA_MESSAGE;
+
+    //Created variables here instead of in the method so that it wouldnt mess with the rest of the program
     TextView tv, message, counter;
     EditText input;
     Button b1;
     int count = 0;
-    EditText editText;
+    //EditText editText;
 
     public void sendMessage(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, DisplayMessageActivity.class);//Intent takes 2 parameters Context and Class
+        Intent intent = new Intent(this, DisplayMessageActivity.class);//Intent takes 2 parameters Context and Class The DisplayMessage is the class that shows the new creen
         //Context is used because aActivity is a subclass of Context
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);//The putExtra() method adds the value of EditText to the intent. An Intent can carry data types as key-value pairs called extras.
-        startActivity(intent);//The startActivity() method starts an instance of the DisplayMessageActivity that's specified by the Intent
+        startActivity(intent);//opens the activity The startActivity() method starts an instance of the DisplayMessageActivity that's specified by the Intent
     }
 
     @Override
