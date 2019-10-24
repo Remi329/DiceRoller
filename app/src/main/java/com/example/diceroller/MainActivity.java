@@ -1,5 +1,6 @@
 package com.example.diceroller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -7,24 +8,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Message;
-import android.view.View;
+import android.view.View;//These will have to be imported if the ativity is empty initially
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+public class MainActivity extends AppCompatActivity {
+//Created variables here instead of in the method so that it wouldnt mess with the rest of the program
     TextView tv, message, counter;
     EditText input;
     Button b1;
     int count = 0;
+    EditText editText;
+
+    public void sendMessage(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, DisplayMessageActivity.class);//Intent takes 2 parameters Context and Class
+        //Context is used because aActivity is a subclass of Context
+        EditText editText = (EditText) findViewById(R.id.editText);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);//The putExtra() method adds the value of EditText to the intent. An Intent can carry data types as key-value pairs called extras.
+        startActivity(intent);//The startActivity() method starts an instance of the DisplayMessageActivity that's specified by the Intent
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//acts as the mains string args on here
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -70,19 +85,28 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_click(View view){
 
         Random r = new Random();
-        int number = r.nextInt(7-1)+1;
-        tv.setText(Integer.toString(number));
+        int number = r.nextInt(7-1)+1;//generates any random number between the bounds inclusive of 1
+        tv.setText(Integer.toString(number));// when outputting a number you always have to convert it to string
 
         if(input.getText().toString().equals(tv.getText().toString())){
             message.setText("Congratulations");
+            Toast.makeText(MainActivity.this, "Congratulations",Toast.LENGTH_SHORT).show();//pops up message
             count++;
-            counter.setText(Integer.toString(count));
+            counter.setText(Integer.toString(count));//count is incremented and set to display the incremented score/count
         }
         else {
             message.setText("Wrong");
         }
+    }
+    public void on_button_click1(View view){
+        message.setText("If you could have any food in the world what would it be");
+        Toast.makeText(MainActivity.this, "If you could have any food in the world what would it be",Toast.LENGTH_SHORT).show();
+    }
+
+    public void on_button_click2(View view){
 
 
     }
+
 
 }

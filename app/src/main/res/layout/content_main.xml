@@ -31,12 +31,32 @@
         android:inputType="number"/>
 
     <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="I am Feeling Lucky"
+    android:id="@+id/rollbutton"
+    tools:ignore="MissingConstraints"
+    android:onClick="on_button_click"
+    tools:layout_editor_absoluteX="179dp"
+    tools:layout_editor_absoluteY="242dp" />
+
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Let's play D-ICEBREAKERS"
+    android:id="@+id/D-Icebreakers"
+    tools:ignore="MissingConstraints"
+    android:onClick="on_button_click1"
+    tools:layout_editor_absoluteX="179dp"
+    tools:layout_editor_absoluteY="242dp" />
+
+    <Button
+        android:id="@+id/newD-ICEBREAKERS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Roll"
-        android:id="@+id/rollbutton"
+        android:onClick="sendMessage"
+        android:text="Add new D-ICEBREAKERS"
         tools:ignore="MissingConstraints"
-        android:onClick="on_button_click"
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="242dp" />
 
