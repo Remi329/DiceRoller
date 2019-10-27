@@ -50,6 +50,14 @@
     tools:layout_editor_absoluteX="179dp"
     tools:layout_editor_absoluteY="242dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question generated"
+        android:id="@+id/Qgenerated"
+        android:textAlignment="center"
+        android:textSize="20dp"/>
+
     <Button
         android:id="@+id/newD-ICEBREAKERS"
         android:layout_width="wrap_content"

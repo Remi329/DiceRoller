@@ -7,7 +7,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Message;
+import android.util.Log;
 import android.view.View;//These will have to be imported if the ativity is empty initially
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends AppCompatActivity {
     public static String EXTRA_MESSAGE;
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     EditText input;
     Button b1;
     int count = 0;
+    TextView questionGenerated;
+    int RandomNoGenerated = -1;//lets computer know no value has been drawn
+    private static final String TAG = "MainActivity";
     //EditText editText;
 
     public void sendMessage(View view) {
@@ -48,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         input = findViewById(R.id.userinput);
         message = findViewById(R.id.Message);
         counter = findViewById(R.id.points);
+        questionGenerated = findViewById(R.id.Qgenerated);
+
+
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,11 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
         Random r = new Random();
         int number = r.nextInt(7-1)+1;//generates any random number between the bounds inclusive of 1
+        RandomNoGenerated = number;
         tv.setText(Integer.toString(number));// when outputting a number you always have to convert it to string
 
         if(input.getText().toString().equals(tv.getText().toString())){
             message.setText("Congratulations");
-            Toast.makeText(MainActivity.this, "Congratulations",Toast.LENGTH_SHORT).show();//pops up message
+            Toast.makeText(MainActivity.this, "Congratulations", LENGTH_SHORT).show();//pops up message
             count++;
             counter.setText(Integer.toString(count));//count is incremented and set to display the incremented score/count
         }
@@ -98,8 +107,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void on_button_click1(View view){
-        message.setText("If you could have any food in the world what would it be");
-        Toast.makeText(MainActivity.this, "If you could have any food in the world what would it be",Toast.LENGTH_SHORT).show();
+        ArrayList<String> stringArrayList = new ArrayList<String>();
+        stringArrayList.add("If you could go anywhere in the world, where would you go?");
+        stringArrayList.add("If you were stranded on a desert island, what three things would you want to take with you?");
+        stringArrayList.add("If you could eat only one food for the rest of your life, what would that be?");
+        stringArrayList.add("If you won a million dollars, what is the first thing you would buy?");
+        stringArrayList.add("If you could spend the day with one fictional character, who would it be?");
+        stringArrayList.add("If you found a magic lantern and a genie gave you three wishes, what would you wish?");
+
+        Collections.shuffle(stringArrayList);//shuffles the elements in the array
+        if(RandomNoGenerated != -1)
+        questionGenerated.setText((stringArrayList.get(RandomNoGenerated)));
+
+
+
     }
 
     public void on_button_click2(View view){
