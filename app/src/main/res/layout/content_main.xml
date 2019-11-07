@@ -79,10 +79,10 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:id="@+id/Message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:id="@+id/Message"/>
+        tools:ignore="MissingConstraints" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
